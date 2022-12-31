@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/menu.css' %}">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <script type="text/javascript">
+    let user = '{{request.user}}'
+
+     function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+       }
+       return cookieValue;
+      }
+      const csrftoken = getCookie('csrftoken');
+</script>
+    <title>Menu</title>
+</head>
+
+<body>
+
+        {%  include "storeapp/nav_bar.html" %}
+        <div class="base-container">
+            <div class="menu-container">
+                <div class="div-menu menu1">
+                    <img class="offers-img1 i img" src="{{menu.imageURL}}" />
+                    <hr />
+                    <div>
+                        <div class="cart">
+
+                                <button class="add-to-cart update-cart" data-product="{{menu.id}}" data-action="add" id="btn-{{item.product.id}} add-to-cart " >add to cart</button>
+
+
+
+                            <div class="price">
+                                <span><img class="naira-img" src="{% static 'images/naira.png' %}" />{{menu.price|floatformat:2}}</span>
+                            </div>
+                        </div>
+                        <div class="detail">
+                          {{menu.product_brifing}}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+
+</html>

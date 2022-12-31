@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/delivery.css' %}">
+
+
+
+ <script type="text/javascript">
+    let user = '{{request.user}}'
+
+     function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+       }
+       return cookieValue;
+      }
+      const csrftoken = getCookie('csrftoken');
+</script>
+    <title>delivery</title>
+</head>
+
+<body>
+ {%  include "storeapp/nav_bar.html" %}
+
+    <div class="center-wrapper">
+        <div class="wrapper">
+
+            <div class="delivery-detail">
+               <a href="{% url 'check-out' %}"> <div class="back-btn"><span>&#8592 back to cart</span></div></a>
+
+            </div> <hr>
+            <div><span>Order summary</span></div>
+            <hr>
+
+            <div class="address-container">
+                {% for item in items %}
+                <div class="order-summary-cart">
+                    <div><img class="img" src="{{item.product.image.url}}"></div>
+                    <div>{{item.product.name}}</div>
+                    <div>{{item.product.price|floatformat:2}}</div>
+                    <div><span>x</span> {{item.quantity}}</div>
+                </div><hr>
+                {% endfor %}
+
+
+                <div class="order-total">
+                    <div><span>Item: {{order.get_cart_items}}</span></div>
+                    <div><span>Total: {{order.get_cart_total|floatformat:2}}</span></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper">
+
+            <div><span>Delivery information:</span></div><hr>
+
+            <form class="address-container" id="form">
+
+
+
+                <div class="delivery-detail">
+<div class="container delivery-address"><input class="address-div" id="city" type="text" placeholder="city" required></div>
+<div class="container delivery-address"><input class="address-div" id="street" type="text" placeholder="street-Address"required></div>
+<div class="container delivery-address"><input class="address-div" id="pickup" type="text" placeholder="pickup-location" required></div>
+ <div class="container delivery-address"><input class="address-div" id="phone" type="text" placeholder="phone-number"required></div>
+
+
+
+                    <div class="continue-button ">
+
+                         <div class="delivery-btn "><input class="continue-btn " id="form-btn" type="submit" value="continue"></div>
+                    </div>
+
+                </div>
+
+
+            </form>
+        </div>
+
+
+    </div>
+<script type="text/javascript">
+
+   let delivery = true
+   let total = '{{order.get_cart_total|floatformat:2}}'
+   let form = document.getElementById('form')
+
+   form.addEventListener('submit', function(e){
+       e.preventDefault()
+       console.log('form submitted...')
+   })
+
+   document.getElementById('form-btn').addEventListener('click',function(e){
+
+       submitFormData()
+
+   })
+
+
+   function submitFormData(){
+        console.log('payment button clicked')
+
+        let userFormData ={
+
+            'total':total,
+            'city':form.city.value,
+            'street':form.street.value,
+            'pickup':form.pickup.value,
+            'phone':form.phone.value,
+        }
+
+
+        let url ='/process_order/'
+        fetch(url,{
+            method: "POST",
+            headers:{
+                 'Content-Type':'application/json',
+                 'X-CSRFToken': csrftoken,
+            },
+            body:JSON.stringify({'form':userFormData })
+
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('success:', data);
+          alert('Order completed');
+          window.location.href ="{% url 'main' %}"
+        })
+   }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

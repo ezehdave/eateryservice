@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/history.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style\history-detail.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-container">
+      <h1 class="nav">navbar</h1>
+    </div>
+    <div class="preview-wrapper">
+        <div class="preview">
+            <div class="detail">
+                <div class="back"><a href="{% url 'history' %}"><span>&#8592 back </span></a></div>
+                <h2 class="delivery-details success">Transaction was successfull <b class="emoji">&#9786;</b></h2>
+            </div>
+            <br>
+            <div class="detail">
+                <h2 class="delivery-details">Transaction Details</h2>
+            </div>
+            <hr>
+            <div >
+                 <div class="container-delivery">
+                    <div>
+                      Transaction-Status
+                    </div>
+                    <div>
+                        Accepted
+                     </div>
+                </div>
+                <hr>
+                <div class="container-delivery">
+                    <div>
+                      Transaction-ID
+                    </div>
+                    <div>
+                        {{transactionId}}
+                     </div>
+                </div>
+                <hr>
+                <div class="container-delivery">
+                    <div>
+                        Items
+                    </div>
+                    <div> {% for i in ordereds  %}
+                         <br>
+                         <div class="container-delivery">
+                            <div>{{i.product}}</div>
+                            <div>&#8358; {{i.product.price }} x {{i.quantity}} </div>
+                         </div>
+                        {%endfor%}
+                    </div>
+
+                </div>
+                <hr>
+
+                <div class="container-delivery">
+                    <div>
+                        Total
+                    </div>
+                    <div>
+                       &#8358; {{delivery.total}}
+                    </div>
+                </div>
+                <hr>
+
+
+            </div>
+            <div class="detail">
+                <h2 class="delivery-details">Delivery  Details</h2>
+            </div>
+            <hr>
+            <div >
+                <div class="container-delivery">
+                    <div>
+                       City
+                    </div>
+                    <div>
+                        {{delivery.city}}
+                     </div>
+                </div>
+                <hr>
+                <div class="container-delivery">
+                    <div>
+                        street-Address
+                    </div>
+                    <div>
+                        {{delivery.address}}
+                    </div>
+                </div>
+                <hr>
+
+                <div class="container-delivery">
+                    <div>
+                        pick-up Location
+                    </div>
+                    <div>
+                        {{delivery.pickup_location}}
+                    </div>
+                </div>
+                <hr>
+                <div class="container-delivery">
+                    <div>
+                        phone number
+                    </div>
+                    <div>
+                      {{delivery.phone_number}}
+                    </div>
+               </div>
+               <hr>
+                  <div class="container-delivery">
+                    <div>
+                        Delivery-Status
+                    </div>
+                    <div>
+                      pending
+                    </div>
+               </div>
+               <hr>
+
+
+            </div>
+            <button>download receipt</button>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

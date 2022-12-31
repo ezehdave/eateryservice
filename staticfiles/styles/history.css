@@ -1,0 +1,166 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    margin: 0px;
+
+
+}
+
+
+/* main page*/
+.nav-container{
+    display: flexbox;
+    flex-direction: row;
+    margin: 0px;
+    background-color: orange;
+
+}
+
+a{
+   text-decoration: none;
+   color: inherit;
+}
+.cart-img{
+
+    width: 60px;
+    padding: 10px;
+    z-index: 100;
+}
+.login{
+    padding: 10px 30px;
+    margin: 10px;
+    background-color: yellow;
+    text-align: center;
+    color: orange;
+
+
+}
+.login:hover{
+    color: white;
+    background-color: orange;
+    border: 1px solid white;
+}
+.cart-number{
+    background-color: red;
+    display: inline;
+    padding: 2px 5px;
+    border-radius: 15px;
+    color: white;
+    position:absolute;
+    margin-top: 5px;
+    right: 8px;
+
+
+}
+.cart-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content:end;
+
+
+}
+
+
+.nav-container{
+    display: grid;
+    grid-template-columns: 1fr 200px;
+
+}
+.cart-img-container{
+    position: relative;
+}
+
+h1{margin: 0px;}
+.nav{
+
+    color: white;
+    flex: 1;
+    height: 50px;
+
+}
+
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    background-color: orange;
+
+}
+h1{margin: 0px;}
+.nav{
+
+    color: white;
+    flex: 1;
+    height: 50px;
+
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    padding: 10px;
+
+}
+.center{
+
+    text-align: center;
+}
+.pending{
+    color: orangered;
+}
+.success{
+    color: greenyellow;
+}
+.btn{
+    background-color: orange;
+    text-align: center;
+    padding: 5px 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+.preview{
+    margin-top: 10px;
+    flex: 1;
+    max-width: 1000px;
+    padding: 10px;
+    box-shadow:1px 4px 8px rgb(22, 18, 18, 0.3) ;
+    margin-bottom: 20px;
+
+}
+.preview-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+
+}
+.end{
+    justify-content: end;
+}
+
+/*transaction detail*/
+.container-delivery{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.delivery-details{
+    text-align: center;
+}
+.emoji{
+   font-size:50px;
+
+}
+.back{
+    display: inline-block;
+    border: 1px solid orange;
+    margin: 5px;
+    padding: 5px 20px;
+    color:orange;
+
+}
+a{
+    color: inherit;
+    text-decoration:none;
+}

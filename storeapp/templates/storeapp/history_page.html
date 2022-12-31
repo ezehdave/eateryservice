@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/history.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="style/home.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    {%  include "storeapp/nav_bar.html" %}
+
+  <div class="preview-wrapper">
+    <div class="preview">
+
+      {% for i in ordered%}
+       {% if i.transaction_id != None %}
+
+      <div class="container">
+        <div>ID:<span>{{i}}</span></div>
+        <div class="center success">success</div>
+        <div class="end"><a href="{% url 'transaction_page' i %}"><button class="btn">view Details</button> </a></div>
+
+      </div>
+      <hr>
+      {% endif %}
+  {% endfor%}
+    </div>
+
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>

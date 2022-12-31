@@ -1,0 +1,196 @@
+body{
+    background-color: white;
+    margin: 0px;
+}
+
+.nav-container{
+    display: flexbox;
+    flex-direction: row;
+    margin: 0px;
+    background-color: orange;
+    margin-bottom: 10px;
+
+
+}
+
+.cart-img{
+
+    width: 35px;
+    padding: 10px;
+}
+.login{
+    padding: 10px 30px;
+    margin: 10px;
+    background-color: yellow;
+    text-align: center;
+    color: orange;
+    border: 1px solid orange;
+
+
+
+}
+.login:hover{
+    color: white;
+    background-color: orange;
+    border: 1px solid white;
+}
+.cart-number{
+    background-color: red;
+    display: inline;
+    padding: 2px 5px;
+    border-radius: 15px;
+    color: white;
+    position:absolute;
+    margin-top: 5px;
+    right: 8px;
+
+
+}
+.cart-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content:end;
+
+
+}
+
+
+.nav-container{
+    display: grid;
+    grid-template-columns: 1fr 200px;
+
+}
+.cart-img-container{
+    position: relative;
+}
+
+h1{margin: 0px;}
+.nav{
+
+    color: white;
+    flex: 1;
+    height: 50px;
+
+}
+h1{margin: 0px;}
+.nav{
+
+    color: white;
+    flex: 1;
+    height: 50px;
+
+}
+.delivery-detail{
+
+
+
+
+}
+.name,
+.phone-nunber,
+.address-div,
+.landmark{
+    padding:10px 5px;
+    border: 2px solid beige;
+
+
+    width: 98%;
+}
+
+.delivery-address,
+.delivery-landmark{
+    width: 100%;
+    padding:10px 0px;
+
+
+
+
+}
+
+
+label{
+    padding: 10px;
+}
+select{
+
+    padding: 5px;
+}
+.address{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    margin-bottom: 30px;
+
+
+
+}
+
+.continue-btn{
+    background-color: orange;
+    background-color: orange;
+    color:white ;
+    text-align: center;
+
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    padding: 10px;
+
+}
+
+.container{
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+}
+
+.center-wrapper{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+
+   padding: 10px;
+
+
+}
+.wrapper{
+
+    box-shadow:1px 4px 8px rgb(22, 18, 18, 0.3) ;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+
+
+
+}
+@media(max-width:500px){
+    .center-wrapper{
+        grid-template-columns: 1fr;
+    }
+}
+span{
+    font-weight: bold;
+}
+.order-summary-cart{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+
+}
+
+.img{
+    height: 50px;
+    width: 60px
+}
+.back-btn{
+    border: 1px solid orange;
+    padding: 5px;
+    width: 150px;
+    color: orange;
+}
+a{
+
+     color: inherit;
+    text-decoration:none;
+}

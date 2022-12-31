@@ -1,0 +1,50 @@
+  {% load static %}
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand"href="{% url 'main'%}">Navbar w/ text</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'main'%}">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'menu-list'%}">MENU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'history'%}">HISTORY</a>
+          </li>
+
+        </ul>
+        <span class="navbar-text">
+
+
+                {% if user.is_authenticated %}
+                 <a  class="nav-link" href="{% url 'logout'%}"><span>LOGOUT</span></a>
+                {%else%}
+                 <a  class="nav-link" href="{% url 'login'%}"><span>LOGIN</span></a>
+                {% endif %}
+
+        </span>
+      </div>
+    </div>
+  </nav>
+   <div class="nav-container ">
+            <div> <h1 class="nav"></h1></div>
+
+            <div class="cart-nav">
+
+
+                 <a href="{% url 'check-out'%}">
+                     <div class="cart-img-container">
+                         <img class="cart-img"  src="{% static 'images/cart.png' %}"/>
+                         <div class="cart-number">
+                             <span  id="cart-number-container">{{cartItems}}</span>
+                         </div>
+                     </div>
+                 </a>
+            </div>
+
+    </div>
