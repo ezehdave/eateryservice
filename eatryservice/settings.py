@@ -39,9 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'storeapp.apps.StoreappConfig'
+    
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,6 +58,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'eatryservice.urls'
+CSRF_TRUSTED_ORIGINS = ['https://eateryservice-production.up.railway.app',]
+
 
 TEMPLATES = [
     {
@@ -78,11 +85,14 @@ WSGI_APPLICATION = 'eatryservice.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER':'postgres',
+        'PASSWORD':'PddH76Mdk0WdliuZsZ15',
+        'HOST': 'containers-us-west-178.railway.app',
+        'PORT':'5644',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
